@@ -4,8 +4,16 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 
+#node_modules
+node_modules/
+package-lock.json
+
+#kafka data
+data/
+
 # Other files and folders
 .settings/
+ssl/
 
 # Executables
 *.swf

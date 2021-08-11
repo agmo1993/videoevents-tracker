@@ -1,0 +1,39 @@
+{
+  "name": "mpec-videotracking",
+  "version": "1.0.0",
+  "description": "Database and API for tracking video watching events on MPEC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agmo1993/mpec-videotracking.git"
+  },
+  "keywords": [
+    "kafka",
+    "ksqldb",
+    "node",
+    "videoevents"
+  ],
+  "author": "Abdul Rehman Mohammad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agmo1993/mpec-videotracking/issues"
+  },
+  "homepage": "https://github.com/agmo1993/mpec-videotracking#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "https": "^1.0.0",
+    "kafkajs": "^1.15.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
