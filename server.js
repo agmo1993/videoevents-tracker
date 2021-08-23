@@ -1,24 +1,13 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const router = express.Router();
-const app = express();
-const kafka = require('./src/kafka');
-const videoAPI = require('./src/videoAPI');
+const routes = require('./src/videoAPI');
 const fs = require("fs");
+const https = require("https");
+const express = require("express");
 var helmet = require('helmet');
+const bodyParser = require("body-parser");
+
+
+const app = express();
 var cors = require('cors')
-
-
-//setting config variables from .env 
-require('dotenv').config();
-
-//create kafka producer
-const producer = kafka.producer({allowAutoTopicCreation: true});
-
-//create kafka consumer
-const consumer = kafka.consumer({
-  groupId: process.env.GROUP_ID
-})
 
 //secure app
 app.use(helmet());
@@ -30,10 +19,7 @@ app.use(bodyParser.json());
 app.use(cors())
 
 // add router in express app
-app.use("/",router);
-
-//ksql query url
-const url = "http://localhost:8088/query";
+app.use("/",routes);
 
 //path to ssl certs
 const options = {
@@ -41,12 +27,9 @@ const options = {
   cert: fs.readFileSync("./ssl/mpec.crt")
 };
 
-//start the producer and consumer (ksqlDB) API
-videoAPI(router, app, producer, url, options).catch(error => {
-    console.error(error)
-    process.exit(1)
-})
+https.createServer(options, app).listen(process.env.PORT,() => {
+  console.log(`Started on PORT ${process.env.PORT}`);
+});
 
-
-
+module.exports = app;
 
