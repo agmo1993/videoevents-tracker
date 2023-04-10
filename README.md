@@ -9,7 +9,7 @@ Database and API for tracking video playback events per user using kafka and ksq
 - Docker [=>v20.10.17] 
 - Docker Compose [=>v2.10.2]
 - Sqitch [v1.3.1]
-- npm [version]
+- npm [v8.15.0]
 
 ## Start the ksqldb stack
 
